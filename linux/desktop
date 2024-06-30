@@ -1,0 +1,16 @@
+sudo apt-get install ubuntu-desktop
+startx
+
+запустить браузер с поддержкой ввода с клавиатуры
+GTK_IM_MODULE=xim firefox
+
+существует несколько внешних оболочек для линукса:
+xfce
+LXDE облегченная среда рабочего стола X11
+gnome GNU Network Object Model Environment
+KDE Plasma 5
+
+Если NVIDIA, то x11 будет менее глючным
+
+GEDIT
+дефолтный текстовый редактор для GNOME

@@ -1,0 +1,21 @@
+
+Устанавливаем zsh, если его нет в системе:
+sudo apt install zsh
+
+Применяем его для юзера
+chsh -s /bin/zsh username
+
+Устанавливаем:
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+получаем файл /home/user/.zshrc
+там добавляем плагины:
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+source ~/.zshrcgit clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+plugins=(
+        git
+        zsh-autosuggestions
+)

@@ -1,0 +1,5 @@
+sudo groupadd docker - создать группу докера
+
+sudo usermod -aG docker $USER - добавить в группу текущего юзера
+
+newgrp docker - применяет новые настройки групп пользователя

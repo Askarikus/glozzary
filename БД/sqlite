@@ -1,0 +1,7 @@
+sqlite3 sample.db - запустить и создать пустую БД в файле под названием
+
+спец команды sqlite начинаются с точки (это не часть SQL)
+.mode column
+.headers on
+
+.exit or Ctrl+D - выход

@@ -1,0 +1,4 @@
+обязательно 2 косые черты потому, что консольная команда не распознает полный путь к классу
+https://stackoverflow.com/questions/69218666/doctrine-migration-class-not-found-error-when-attempting-to-run-down-rollback-co
+
+php bin/console doctrine:migrations:execute DoctrineMigrations\\Version20240524075754

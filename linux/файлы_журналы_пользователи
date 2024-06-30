@@ -1,0 +1,52 @@
+JOURNALCTL
+Команда journalctl позволяет контролировать количество дискового пространства, отведённого для записи логов
+sudo journalctl --vacuum-size=100M - сжимает файл журнала
+journalctl -b -p err - просмотр ошибок
+
+USERADD добавить пользователя
+useradd -p my_password askar
+сменить пользователю пароль
+passwd askar
+добавить пользователю возможность исполнять команды sudo
+usermod -aG sudo askar
+
+DU
+du -h - выведет весь список всех путей с указанием их размера (не рекомендуется, спсиок огромный)
+
+du /home/askar/База\ знаний -sh - пример
+32K	/home/askar/База знаний
+
+/var/lib/docker/overlay2 - огромная база докера
+sudo du /var/lib/docker/overlay2 -sh
+28G	/var/lib/docker/overlay2
+
+cat /etc/passwd - пользователи
+chsh - поменять оболочку тек юзера
+
+TAIL
+tail -f /path/thefile.log
+
+добавляем пользовател в список авторизованных, чтобы не вводить пароль постоянно при сессии ssh
+ssh-keygen
+содержимое id_rsa.pub -> .ssh/authorized_keys
+
+sshpass
+утилита, которая позволяет выполнять команды на удалённом сервере по SSH без ввода пароля вручную
+
+scp text.txt askar@194.87.147.143:{путь_к_файлу}
+
+/etc/hosts -> 127.0.0.1 - {имя сервера} - теперь по этому имени будет доступен локалхост, самое первое куда смотрит поисковик адреса - этот файл и резолвит его
+
+Докер:
+newgrp docker
+sudo gpasswd -a $USER docker - добавить тек юзера в группу докера, чтобы у него были права на запуск контейнеров и тд
+docker exec -it <cont_name> bin/bash
+
+просмотреть в каком режиме загружается Linux
+systemctl get-default
+сменить режим на графический
+sudo systemctl set-default graphical.target
+сменить режим на текстовый
+sudo systemctl set-default multi-user.target
+
+sudo systemctl reboot

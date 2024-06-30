@@ -1,0 +1,4 @@
+нужно не забыть установить plugin management
+
+rabbitmq-plugins enable rabbitmq_management
+sudo  rabbitmq-plugins enable rabbitmq_management

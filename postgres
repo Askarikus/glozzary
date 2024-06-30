@@ -1,0 +1,53 @@
+sudo apt install postgresql
+Команда sudo ( substitute user and do, подменить пользователя и выполнить ) позволяет строго определенным пользователям выполнять указанные программы с административными привилегиями без ввода пароля суперпользователя root. Если быть точнее, то команда sudo позволяет выполнять программы от имени любого пользователя, но, если идентификатор или имя этого пользователя не указаны, то предполагается выполнение от имени суперпользователя root.
+
+Также, мое предположение, что выполнение команд от имени другого пользователя настраивается в файле sudoers
+
+опции:
+-i, --login - запустить оболочку входа в систему от имени указанного пользователя; также можно задать команду
+
+$ sudo -i -u postgres - переключает тебя на пользователя postgres, который создается в системе Linux
+$ sudo --login --user postgres
+postgres@server:~$ psql
+
+выставляем доступ наружу
+/etc/postgresql/14/main/pg_hba.conf:
+host    all             all             0.0.0.0/0            md5
+
+/etc/postgresql/14/main/postgresql.conf:
+listen_addresses = '*'
+
+вывести список созданных пользователей:
+\du
+
+multiline edit - открывается редактор
+\e
+
+postgres@server:~$ createuser --interactive - создает пользователя в системе postgres
+через psql:
+CREATE USER uername WITH PASSWORD 'myPassword';
+
+GRANT pg_read_all_data TO username;
+GRANT pg_write_all_data TO username;
+GRANT CONNECT ON DATABASE database_name TO username;
+GRANT USAGE ON SCHEMA schema_name TO username;
+
+\c exampledb; - \c exampledb;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO username;
+GRANT SELECT ON admins TO askar_read;
+
+выдаем права на запись в таблицы, связанные с логином пользователя
+GRANT SELECT, INSERT, UPDATE ON refresh_tokens TO askar_test;
+GRANT SELECT, INSERT, UPDATE ON refresh_tokens_id_seq TO askar_test;
+GRANT SELECT, INSERT, UPDATE ON users TO askar_test;
+
+поменять пароль
+ALTER USER user_name WITH PASSWORD 'new_password';
+
+показать все схемы(находясь внутри консоли psql):
+\dn
+
+OR
+
+SELECT schema_name
+FROM information_schema.schemata;

@@ -1,0 +1,24 @@
+Python
+создать дату:
+1) date(year, month, day):
+	date(2022, 12, 12) -> datetime.date(2022, 12, 12)
+2) date.today():
+	datetime.date(2024, 4, 25)
+3) date.fromtimestamp(timestamp): 
+	date.fromtimestamp(1714037334)
+4) date.fromordinal(ordinal):
+	date.fromordinal(100) -> datetime.date(1, 4, 10)
+	date.fromordinal(746999) -> datetime.date(2046, 3, 19)
+	
+
+Javascript
+new Date()
+new Date(2009, 11,9) месяца - с нуля, 11 - декабрь
+
+PHP
+установка часового пояса
+date.timezone = "Europe/Moscow"
+new DateTime()
+echo date('Y-m-d H:i:s');
+
+

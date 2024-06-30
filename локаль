@@ -1,0 +1,29 @@
+Локаль - это набор параметров, характеризующих настройки пользовательского интерфейса в данный момент времени.
+формат [language[_territory][.codeset][@modifier]]
+LANG=ru_RU.UTF-8  - язык с кодировкой
+LANGUAGE=ru:en  язык(похоже с переключением)
+LC_CTYPE="ru_RU.UTF-8"
+LC_NUMERIC=ru_RU.UTF-8
+LC_TIME=ru_RU.UTF-8
+LC_COLLATE="ru_RU.UTF-8"
+LC_MONETARY=ru_RU.UTF-8
+LC_MESSAGES="ru_RU.UTF-8"
+LC_PAPER=ru_RU.UTF-8
+LC_NAME=ru_RU.UTF-8
+LC_ADDRESS=ru_RU.UTF-8
+LC_TELEPHONE=ru_RU.UTF-8
+LC_MEASUREMENT=ru_RU.UTF-8
+LC_IDENTIFICATION=ru_RU.UTF-8
+LC_ALL=
+Через точку указывается кодировка
+
+
+POSIX - платформа, интерфейс(переносимый), набор интерфейсов для взаимодействия с системой, описывающих взаимодействие между системой и
+прикладными программами. Создан для универсализации unix систем
+
+locale -k LC_TELEPHONE
+tel_int_fmt="+%c (%a) %l"
+tel_dom_fmt="(%a) %l"
+int_select="11"
+int_prefix="1"
+telephone-codeset="UTF-8"

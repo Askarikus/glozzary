@@ -1,0 +1,26 @@
+Подсчитать кол-во одинаковых элементов в массиве:
+PHP:
+array_count_values($arr)
+$l = [1, "this", 1, "is", "Sparta", "Sparta"]
+array_count_values($l):
+[1 => 2, "Sparta" => 2, "this"=> 1, "is"=> 1]
+
+Python:
+from collections import Counter
+
+l = [1, "this", 1, "is", "Sparta", "Sparta"]
+print(Counter(l)):
+
+Counter({1: 2, 'Sparta': 2, 'this': 1, 'is': 1})
+
+Javascript:
+let array = ["apple","banana","apple","orange","banana","apple"];
+
+let count= array.reduce((a,c) => (a[c] = ++a[c] || 1, a) ,{});
+
+console.log(count);
+{
+  "apple": 3,
+  "banana": 2,
+  "orange": 1
+}

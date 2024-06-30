@@ -1,0 +1,32 @@
+
+echo 0 $(awk '/TYPE/ {print "+", $2}' /proc/`pidof PROCESS`/smaps) | bc (PROCESS - code, firefox, pidof PROCESS)
+
+Rss: resident memory usage, all memory the process uses, including all memory this process shares with other processes. It does not include swap;
+Shared: memory that this process shares with other processes;
+Private: private memory used by this process, you can look for memory leaks here;
+Swap: swap memory used by the process;
+Pss: Proportional Set Size, a good overall memory indicator. It is the Rss adjusted for sharing: if a process has 1MiB private and 20MiB shared between other 10 processes, Pss is 1 + 20/10 = 3MiB
+
+BC
+bc (Basic Calculator) - научный калькулятор
+
+С командой ps или похожими инструментами вы можете только посмотреть количество страниц памяти выделенных для этого процесса
+Massif Valgrind heaptrack
+
+sudo pmap -x <process pid>
+
+ps aux
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+
+VSZ - вирутальная память
+
+NODE_EXPORTER
+запускаем из папки ./node_exporter - смотрим метрики http://localhost:9100/
+
+PROMETHEUS
+запускаем из папки ./prometheus  смотрим localhost:9090
+в файлу node_exporter.yaml:
+scrape_configs:
+- job_name: node
+  static_configs:
+  - targets: ['localhost:9100']

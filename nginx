@@ -1,0 +1,8 @@
+скопировать дефолтные настройки для нового сайта:
+cp /etc/nginx/sites-available/default /etc/nginx/sites-available/test.net
+
+затем нужно переместить нужные настройки в sites-enabled
+ln -s /etc/nginx/sites-available/test.net /etc/nginx/sites-enabled/
+
+/etc/init.d/nginx restart
+systemctl restart nginx

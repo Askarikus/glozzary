@@ -1,0 +1,11 @@
+php
+длина строки
+strlen($s); - функция
+кол-во вхождений
+substr_count($s);
+
+python:
+len(s) - функция
+
+javascript:
+s.length - это свойство объекта string
