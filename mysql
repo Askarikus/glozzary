@@ -1,0 +1,89 @@
+войти в консоль CLI
+mysql <db_name>
+
+exit
+\q
+
+SELECT user, authentication_string, plugin, host FROM mysql.user;
++------------------+------------------------------------------------------------------------+-----------------------+-----------+
+| user             | authentication_string                                                  | plugin                | host      |
++------------------+------------------------------------------------------------------------+-----------------------+-----------+
+| root             |                                                                        | caching_sha2_password | %         |
+;,^_Etjf.zd4I0ukS9aOIir7bADt3MpEwe3BCcNZX8xjJO/ | caching_sha2_password | %         |
+| mysql.infoschema | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+| mysql.session    | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+| mysql.sys        | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+| root             |                                                                        | caching_sha2_password | localhost
+
+судя по всему означает, что root подключается без указания пароля
+
+db:
+container_name: wahelp_mysql
+hostname: wahelp.mysql
+image: amd64/mysql:oracle
+restart: always
+ports:
+- '127.0.0.1:3306:3306'
+environment:
+MYSQL_DATABASE: ${DB_DATABASE}
+MYSQL_ROOT_PASSWORD:
+MYSQL_PASSWORD: ${DB_PASSWORD}
+MYSQL_USER: ${DB_USERNAME}
+MYSQL_ALLOW_EMPTY_PASSWORD: 1 - тоже означает, что можно входить без пароля
+
+также можно войти под root
+mysql --user=root wahelp
+
+CREATE USER 'askar' IDENTIFIED BY 'askar';
+GRANT SELECT ON *.* TO 'askar';
+GRANT ALL PRIVILEGES ON *.* TO 'askar';
+
+show tables;
++---------------------------------------------------+
+| Tables_in_wahelp                                  |
++---------------------------------------------------+
+| amo_api_auth                                      |
+| amo_api_chats_sended                              |
+| amo_chats_hash                                    |
+| amo_intergations                                  |
+........
+
+показать данные таблицы:
+show create table tarifs;
+| tarifs | CREATE TABLE `tarifs` (
+`id` int NOT NULL AUTO_INCREMENT,
+`type` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+`name` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+`price` int NOT NULL,
+`price_month` int NOT NULL,
+`price_month_info` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+`info` text CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+`sort` tinyint NOT NULL,
+`tarifs_messenger` tinyint NOT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb3 |
+
+или
+
+desc tarifs;
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| id               | int          | NO   | PRI | NULL    | auto_increment |
+| type             | varchar(255) | NO   |     | NULL    |                |
+| name             | varchar(255) | NO   |     | NULL    |                |
+| price            | int          | NO   |     | NULL    |                |
+| price_month      | int          | NO   |     | NULL    |                |
+| price_month_info | varchar(255) | NO   |     | NULL    |                |
+| info             | text         | NO   |     | NULL    |                |
+| sort             | tinyint      | NO   |     | NULL    |                |
+| tarifs_messenger | tinyint      | NO   |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+
+
+подключение через юзера
+useSSL=false
+allowPublicKeyRetrieval=true
+
+опция allowPublicKeyRetrieval=true позволяет запрашивать публичный ключ с сервера, что
+может стать причиной подверженности атаки MITM(Man-in-the-middle)

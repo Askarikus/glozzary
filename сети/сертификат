@@ -1,0 +1,64 @@
+lets encrypt
+устанавливаем сам бот
+sudo apt install certbot python3-certbot-nginx
+
+команда
+sudo certbot --nginx -d askarikus.site
+сначала, если в первый раз запустил, то спросить email и зарегистрирует аккаунт
+Deploying certificate
+Successfully deployed certificate for askarikus.site to /etc/nginx/sites-enabled/tscrapper
+бот влезает в файл настроек nginx для сайта, который указан
+напомню, что натсройки nginx выяглядели так:
+
+listen      80;
+    server_name askarikus.site;
+
+а теперь:
+server {
+    server_name askarikus.site;
+    root /var/www/html/tscrapper;
+    location /{
+        try_files $uri /index.php$is_args$args;
+    }
+    location ~ ^/index\.php(/|$) {
+        include snippets/fastcgi-php.conf;
+        fastcgi_param SCRIPT_FILENAME $request_filename;
+        fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+    }
+    location ~ \.php$ {
+        return 404;
+    }
+    location ~ /\.ht {
+        deny all;
+    }
+    error_log /var/log/nginx/tscrapper_error.log;
+
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/askarikus.site/fullchain.pem; # managed by Certbot по этому адресу лежит сертификат
+    ssl_certificate_key /etc/letsencrypt/live/askarikus.site/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
+server {
+    if ($host = askarikus.site) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen      80;
+    server_name askarikus.site;
+    return 404; # managed by Certbot
+}
+
+sudo cat /etc/letsencrypt/live/askarikus.site/fullchain.pem                                                                                                         1 ↵ askar@ruvds-vbid9
+-----BEGIN CERTIFICATE-----
+MIIE7TCCA9WgAwIBAgISBAzZPDBLWcdtgpWjI2RIDygXMA0GCSqGSIb3DQEBCwUA
+MDMxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQwwCgYDVQQD
+EwNSMTAwHhcNMjQwN...и так далее
+
+To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot again
+   with the "certonly" option. To non-interactively renew *all* of
+   your certificates, run "certbot renew"
