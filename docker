@@ -3,3 +3,6 @@ sudo groupadd docker - создать группу докера
 sudo usermod -aG docker $USER - добавить в группу текущего юзера
 
 newgrp docker - применяет новые настройки групп пользователя
+
+docker-compose up --build --remove-orphans создаетновые контейнер такоим образом, что
+последующий запуск через make up уже будет запускать свежие

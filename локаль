@@ -27,3 +27,7 @@ tel_dom_fmt="(%a) %l"
 int_select="11"
 int_prefix="1"
 telephone-codeset="UTF-8"
+
+xfce - поменять язык на русский:
+setxkbmap ru
+setxkbmap en_US
