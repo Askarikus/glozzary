@@ -1,1 +1,22 @@
 при поиске надо отключать "поиск только в открытых редакторах"
+
+Ctrl+Shift+P основное меню поиска по командам
+Ctrl+k Ctrl+b
+Ctrl+k Ctrl+k
+Ctrl+Tab
+Alt+<up_arrow> Alt+<down_arrow>
+Ctrl+j
+Ctrl+l
+Ctrl+w - комбинация из pycharm
+Ctrl+1, Ctrl+2
+Ctrl+[, Ctrl+] - fold, unfold
+Ctrl+g - перейти на строку
+Ctrl+R - вывести список переменных и методов
+Ctrl+Shift+R - вывести список переменных и методов по проекту
+Ctrl+\ - разбить содержимое экрана
+Ctrl+; переключение между проектами
+Ctrl+~ выбрать цветовую схему
+Ctrl+k z - zen-mode
+
+met - shortcut для php
+Alt+Ctrl+G - generate namespace

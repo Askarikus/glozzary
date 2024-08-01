@@ -1,0 +1,14 @@
+сам исходник лежит в vendor/bin/php-cs-fixer
+можно в отдельную папку установить
+также рядом есть:
+squizlabs/php_codesniffer:
+~/php_cs/vendor/bin/phpcs - просто анализатор, он же проверяет во время деплоя
+~/php_cs/vendor/bin/phpcbf - исправляет
+
+установил глобально:
+phpcs
+phpcbf
+php-cs-fixer
+
+проверка:
+php-cs-fixer fix -vvv --dry-run --show-progress=dots --allow-risky=yes public/incs/class/App/Integrations/Amo/AmoChats.php

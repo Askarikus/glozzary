@@ -21,7 +21,7 @@ sudo du /var/lib/docker/overlay2 -sh
 28G	/var/lib/docker/overlay2
 
 cat /etc/passwd - пользователи
-chsh - поменять оболочку тек юзера
+chsh - поменять оболочку текущего юзера
 
 TAIL
 tail -f /path/thefile.log
