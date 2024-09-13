@@ -1,0 +1,2 @@
+можно продебажить в vendor/doctrine/dbal/src/Driver/PDO/Statement.php:130:
+var_dump($this->stmt);

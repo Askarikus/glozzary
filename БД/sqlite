@@ -5,3 +5,8 @@ sqlite3 sample.db - запустить и создать пустую БД в ф
 .headers on
 
 .exit or Ctrl+D - выход
+
+названия полей(колонок) опрделенного поля:
+SELECT COLUMN_NAME
+FROM INFORMATION_SCHEMA.columns
+WHERE table_name ='user' AND table_schema = 'wahelp';

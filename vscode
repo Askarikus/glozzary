@@ -19,4 +19,15 @@ Ctrl+~ выбрать цветовую схему
 Ctrl+k z - zen-mode
 
 met - shortcut для php
+dec - shortcut для php
 Alt+Ctrl+G - generate namespace
+
+toggle developer tools
+
+sudo snap revert code
+Версия code была понижена до f1e16e1e
+проблема с чрезмерно большим шрифтом решилась настройкой:
+You can fix the big ass context menu by setting window.titleBarStyle to custom, then restart.
+There is a GH issue, too: https://github.com/microsoft/vscode/issues/224515
+Параметры->поиск window.titleBarStyle, переставив с native(берет из системы) на
+custom

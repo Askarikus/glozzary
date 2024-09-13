@@ -6,3 +6,42 @@ ln -s /etc/nginx/sites-available/test.net /etc/nginx/sites-enabled/
 
 /etc/init.d/nginx restart
 systemctl restart nginx
+nginx -s reload
+
+root@1964e961e87c:/# cat /etc/nginx/nginx.conf
+
+user  nginx;
+worker_processes  auto;
+
+error_log  /var/log/nginx/error.log notice;
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    # формат логов типа:
+    127.0.0.1 - - [29/Aug/2024:07:42:24 +0000] "GET /adm/img/side-menu-icon-main.svg HTTP/1.0" 200 1121 "https://localhost/adm/tarifs_new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:129.0) Gecko/20100101 Firefox/129.0"
+    127.0.0.1 - - [29/Aug/2024:07:42:25 +0000] "POST /adm/chose_bot HTTP/1.0" 200 24558 "https://localhost/adm/tarifs_new" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:129.0) Gecko/20100101 Firefox/129.0"
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log  /var/log/nginx/access.log  main; - именно этот файл пустой
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    include /etc/nginx/conf.d/*.conf;
+}

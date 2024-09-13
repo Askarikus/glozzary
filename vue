@@ -1,6 +1,6 @@
 Если ошибка Watchpack Error (watcher): Error: ENOSPC: System limit for number of file watchers reached
 
-# проверить значение 
+# проверить значение
 cat /proc/sys/fs/inotify/max_user_watches
 
 # insert the new value into the system config
@@ -23,6 +23,9 @@ Select a framework: › - Use arrow-keys. Return to submit.
     Solid
     Qwik
     Others
-    
+
 typescript:
-npx ts-node index.ts - исполнить файл .ts    
+npx ts-node index.ts - исполнить файл .ts
+
+Options API когда определяем methods, data(), computed
+Composition API - используем импортированные функции Vue

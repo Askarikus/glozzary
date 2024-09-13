@@ -24,3 +24,42 @@ console.log(count);
   "banana": 2,
   "orange": 1
 }
+
+Из многомерного массива(объекта) сделать плоский:
+массив типа:
+ validationsErrors: {
+        "username": [
+            "The username field is required."
+        ],
+        "password": [
+            "The length of password must be between 6 and 35",
+            "The password must only contain letters and numbers."
+        ]
+ }
+нужно сделать:
+[
+  "username The username field is required."
+  "password The length of password must be between 6 and 35",
+  "password The password must only contain letters and numbers.",
+]
+Python:
+def get_error_messages(validations_errors):
+    error_messages = []
+    for field, messages in validations_errors.items():
+        for message in messages:
+            error_messages.append(f"{field} {message}")
+    return error_messages
+PHP:
+function getErrorMessages($validationsErrors) {
+    $errorMessages = [];
+    foreach ($validationsErrors as $field => $messages) {
+        foreach ($messages as $message) {
+            $errorMessages[] = "$field $message";
+        }
+    }
+    return $errorMessages;
+}
+Javascript:
+validationsErrors.flatMap((name) =>
+    validationsErrors[name].map((message) => `${name} ${message}`)
+)

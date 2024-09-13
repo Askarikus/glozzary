@@ -26,3 +26,6 @@ sudo make install - у этого способа есть минус(лучше 
 
 sudo rm /var/lib/apt/lists/* -vf - чистка
 sudo apt-get clean - чистка
+
+установить из пакета deb(указать полный путь):
+sudo apt install /home/askar/Downloads/dbeaver-ce_24.0.2_amd64.deb 
