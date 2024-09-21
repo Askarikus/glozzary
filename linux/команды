@@ -73,9 +73,13 @@ echo $USER
 askar
 
 find ~/ -type f -name "postgis-2.0.0"
+ЧТОБЫ УДАЛИТЬ ФАЙЛЫ С УКАЗАННЫМ РАСШИРЕНИЕМ:
+find . -name "*.bak" -type f     сначала найти
+find . -name "*.bak" -type f -delete     потом удалить
+
 
 curl
-curl -v показывает вксь процесс
+curl -v показывает весь процесс
 
 шпаргалка
 curl cht.sh

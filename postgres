@@ -52,3 +52,8 @@ OR
 
 SELECT schema_name
 FROM information_schema.schemata;
+
+Просто и быстро создать БД и юзера, дать ему права:
+CREATE DATABASE conduit;
+CREATE USER conduit_user WITH PASSWORD 'conduit_secret';
+grant all privileges on database conduit to conduit_user;

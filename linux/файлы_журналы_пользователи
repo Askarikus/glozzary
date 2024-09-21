@@ -26,12 +26,9 @@ chsh - поменять оболочку текущего юзера
 TAIL
 tail -f /path/thefile.log
 
-добавляем пользовател в список авторизованных, чтобы не вводить пароль постоянно при сессии ssh
-ssh-keygen
-содержимое id_rsa.pub -> .ssh/authorized_keys
+chown, chgrp
+sudo chown -R www-data:www-data askar_realworld_symfony
 
-sshpass
-утилита, которая позволяет выполнять команды на удалённом сервере по SSH без ввода пароля вручную
 
 scp text.txt askar@194.87.147.143:{путь_к_файлу}
 

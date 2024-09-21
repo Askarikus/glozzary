@@ -1,0 +1,24 @@
+добавляем пользователя в список авторизованных, чтобы не вводить пароль постоянно при сессии ssh
+ssh-keygen
+содержимое id_rsa.pub -> .ssh/authorized_keys
+инструкция для github
+ssh-keygen -t ed25519 -C "askarikus@yandex.ru" ed25519 - алгоритм шифрования, C - комментарий
+start ssh-agent (но как правило, все работает без запуска агента):
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+check-connection:
+ssh -vT git@github.com
+or:
+ssh -T git@github.com
+
+`Hi Askarikus! Youve successfully authenticated, but GitHub does not provide shell access.`
+проверка ключа:
+ssh-add -l -E sha256 (-E указание ключа с конкретным шифрованием sha256) или ssh-add -l -E md5
+256 SHA256:HQHsROIiOTHM1+ZBc38WF1aWLDUs1DXfkqT2qcArOxU askarikus@yandex.ru (ED25519)
+должно совпадать с подписью в описании ключа на github
+
+ВАЖНО: если клонируем под sudo, то используем ключ root!
+
+
+sshpass
+утилита, которая позволяет выполнять команды на удалённом сервере по SSH без ввода пароля вручную

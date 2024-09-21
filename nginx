@@ -1,3 +1,6 @@
+как запустить сервер на различных ЯП?
+https://gist.github.com/willurd/5720255
+
 скопировать дефолтные настройки для нового сайта:
 cp /etc/nginx/sites-available/default /etc/nginx/sites-available/test.net
 
@@ -45,3 +48,60 @@ http {
 
     include /etc/nginx/conf.d/*.conf;
 }
+Почему if - зло
+https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/
+для примера:
+alias как бы переписывает текущий root
+location ^~ /app/ {
+    alias /var/www/wahelp.ru_app/public/;
+
+    try_files $uri $uri/ /app/index.html;
+}
+
+существуют директивы и контекст
+server_name = домен, субдомен или IP-адрес or *.mydomain.com
+возвращаю просто файлы мы можем добавлять content-type и вообще хэдеры (include mime.types)
+всегда можно проверить подставив в location блок return 200 OK "hello from location"
+
+exact match =
+regular expr ~ всегда в приоритете перед точным совпадением
+если ^~ перед uri - то высший приоритете даже перед регулярным выражением
+вместо == вообще принято использовать ~
+
+rewrite подменяет запрос в строке браузере,вместо редиректа (last - последний раз перезаписан)
+
+@ помечаем имя(например, для пути)
+
+access_log off; отключает логи для спец пути, нужно указывать внутри location
+
+директива index указывает, что ищем в указанном пути index.html
+
+FAST-CGI
+include fastcgi.conf - как подгружаем типы mime.types
+fastcgi_pass - нужно указать unix сокет(по сути адрес и порт)
+
+процесс(nginx) запущен от опред юзера, не может получить доступ к сокету php, который запущен от др юзера
+но мы в nginx.conf четко указали user www-data в самом начале
+
+потому и reverse_proxy, что он берет запрос, отдает fpm и возвращает результат
+
+timeout - время через которое нужно будет сбросить обработку запроса
+
+sendfile on; не использовать буфер если отдаем статический файл клиенту
+tcp_nopush on;
+HTTP 2 - бинарный протокол в отличие от HTTP1.1(текстовый)
+
+команда openssl -параметры
+в папке ssl лежит cert.str - сертификат, cert.key - ключ
+
+listen 443 ssl; ssl - указывает, что используем соотв модуль
+две след строки указывают, где искать сертификат и ключ
+ssl_certificate             /etc/nginx/ssl/cert.crt;
+ssl_certificate_key         /etc/nginx/ssl/cert.key;
+
+создать вирт хост - значит открыть еще один блок server в конф файле
+если 80 порт
+return 301 https://$host$request_uri;
+ssl_session_cache           shared:SSL:20m; - кэш для ssl сессии
+
+siege - инсрумент для измерения скорости ответа сервера

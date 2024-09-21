@@ -11,3 +11,9 @@ private string $config;
 а нужно
 #[ORM\Column(type: 'string', nullable: true)]
 private string $config;
+
+если пароль к БД сложный
+то сначала всю строчку пропускаем через urlencode
+и получ вставляем в env
+затем в doctrine.yml убираем resolve:
+url: '%env(resolve:DATABASE_URL)%' -> url: '%env(DATABASE_URL)%'
