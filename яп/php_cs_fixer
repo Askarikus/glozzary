@@ -1,14 +1,21 @@
-сам исходник лежит в vendor/bin/php-cs-fixer
+Версия 3.61.1 7th Gear(установил сам):
+сам исходник лежит в /home/askar/php_cs/vendor/bin/php-cs-fixer
 можно в отдельную папку установить
 также рядом есть:
 squizlabs/php_codesniffer:
-~/php_cs/vendor/bin/phpcs - просто анализатор, он же проверяет во время деплоя
+~/php_cs/vendor/bin/phpcs - сниффер, просто анализатор, он же проверяет во время деплоя(Wahelp)
 ~/php_cs/vendor/bin/phpcbf - исправляет
 
-установил глобально:
+Версия глобальная 3.13.0 (a623222):
 phpcs
 phpcbf
-php-cs-fixer
+php-cs-fixer - /usr/local/bin/php-cs-fixer
+
+Верcия bonushelp:
+PHP CS Fixer 3.64.0 Space Sets - переустановил 3.14
+
+Версим VSCODE:
+/home/askar/.vscode/extensions/junstyle.php-cs-fixer-0.3.21/php-cs-fixer.phar PHP CS Fixer 3.64.0 Space Set
 
 проверка:
 php-cs-fixer fix -vvv --dry-run --show-progress=dots --allow-risky=yes public/incs/class/App/Integrations/Amo/AmoChats.php

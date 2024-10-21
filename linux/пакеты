@@ -1,7 +1,7 @@
 Увидеть весь список пакетов, которые установлены в системе,
 dpkg --get-selections
 apt list --installed
-stable репозитории - самые надежные, существуют backports, testing, experimental... 
+stable репозитории - самые надежные, существуют backports, testing, experimental...
 В Debian каждый репозиторий состоит из нескольких веток (разделов):
 main, contrib, non-free
 
@@ -13,13 +13,14 @@ main, contrib, non-free
     Debian 10 ― Buster,
     Debian 11 ― Bullseye.
 
-Операционная система хранит адреса всех репозиториев в специальном файле sources.list, который расположен в каталоге /etc/apt
+Операционная система хранит адреса всех репозиториев в специальном файле sources.list, который расположен
+в каталоге /etc/apt
 адрес репозитория:
 deb ссылка название main(contrib, non-free)
 
 apt пришел на замену apt-get, но в старом apt-get используются алгоритым, которые кто-то учитывает, когда выбирает, какой командой пользоваться
 
-tar -xvf <some_app_name>.tar.gz - сразу распакует и разархивирует. 
+tar -xvf <some_app_name>.tar.gz - сразу распакует и разархивирует.
 ./configure - запустит сборку файла makefile, в который подставятся значения в зависимости от вашей системы
 make - собирает по инструкции из makefile
 sudo make install - у этого способа есть минус(лучше создавать deb пакет)
@@ -28,4 +29,21 @@ sudo rm /var/lib/apt/lists/* -vf - чистка
 sudo apt-get clean - чистка
 
 установить из пакета deb(указать полный путь):
-sudo apt install /home/askar/Downloads/dbeaver-ce_24.0.2_amd64.deb 
+sudo apt install /home/askar/Downloads/dbeaver-ce_24.0.2_amd64.deb
+
+когда запускаем sudo apt update
+Ign означает, что в индексном файле pdif нет изменений, он не будет загружать его снова
+Hit означает, что apt проверил временные метки в списке пакетов, они совпадают и никаких изменений нет.
+Get проверел временные метки, изменения есть и они будут загружены
+
+GPG - GNU Privacy Guard
+keyrings - брелоки
+gpg - это интсрумент ком строки, используемый для авторизации внешних репозиториев
+репозитории нужно подписывать GPG ключом
+в файле, например, cat /etc/apt/sources.list.d/rabbitmq.list:
+пакеты лежат в формате:
+ключ лежит по пути /usr/share/keyrings/rabbitmq.9F4587F226208342.gpg и адрес пакета
+deb [signed-by=/usr/share/keyrings/rabbitmq.9F4587F226208342.gpg] https://ppa2.novemberain.com/rabbitmq/rabbitmq-server/deb/ubuntu bullseye main
+
+иногда нужно преобразовать ключ из формата PGP командной gpg и записать в папку /usr/share/keyrings:
+curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elastic-7.x.gpg

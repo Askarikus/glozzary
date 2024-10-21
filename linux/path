@@ -1,0 +1,5 @@
+/home/askar/.zshrc
+добавляем строку:
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+перезапускаем оболочку:
+source ~/.zshrc

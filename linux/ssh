@@ -19,6 +19,27 @@ ssh-add -l -E sha256 (-E указание ключа с конкретным ш�
 
 ВАЖНО: если клонируем под sudo, то используем ключ root!
 
+статья для улучшения безопасности https://blog.g3rt.nl/upgrade-your-ssh-keys.html
+ssh-keygen -o -a 100 -t ed25519 -f .ssh/id_ruvds_080524 -C askarikus@yandex.ru
+содержимое .ssh/id_ruvds_080524 -> .ssh/authorized_keys
+ssh -i .ssh/id_ruvds_080524 askar@askarikus.site - вход с указанием конкретного ключа
+
+nano /etc/ssh/sshs_config
+sudo service ssh restart
+/etc/apt/apt.conf.d/50unattended-upgrades - можно задать, чтобы загружались только пакеты с пометкой security
+
+FIREWWALL:
+sudo iptables -L -v
+sudo iptables -A INPUT -i lo -j ACCEPT   - INPUT - это цепочка
+sudo iptables -A INPUT -m conntrack -ctstate RELATED, ESTABLISHED -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+sudo iptables -A INPUT -j DROP
+sudo apt-get install -y iptables-persistent
+sudo service netfilter-persistent save
+
+sudo apt-get install -y fail2ban
 
 sshpass
 утилита, которая позволяет выполнять команды на удалённом сервере по SSH без ввода пароля вручную

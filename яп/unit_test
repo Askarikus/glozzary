@@ -1,0 +1,39 @@
+assert - выбрасывает исключение, если не совпадает утверждение
+
+
+phpunit лежит и в bin директории и в vendor/phpunit/phpunit/phpunit
+
+установить как архив phar:
+wget -O phpunit.phar https://phar.phpunit.de/phpunit-10.phar
+php phpunit.phar --version
+chmod +x phpunit.phar - так он становится исполняющимся
+./phpunit.phar --version
+
+установить через установщие phive:
+wget https://phar.io/releases/phive.phar
+wget https://phar.io/releases/phive.phar.asc
+gpg --keyserver hkps.pool.sks-keyservers.net --recv-keys 0x9B2D5D79
+gpg --verify phive.phar.asc phive.phar
+chmod +x phive.phar
+mv phive.phar /usr/local/bin/phive
+после установки phive
+phive install phpunit
+
+установить глобально:
+wget -O phpunit.phar https://phar.phpunit.de/phpunit-10.phar
+chmod +x phpunit.phar
+sudo mv phpunit.phar /usr/local/bin/phpunit
+phpunit --version
+PHPUnit 10.0.0 by Sebastian Bergmann and contributors.
+
+Вообще, phar - это бинарник,можем переименовать, сделать исполняющимся
+
+чтобы исключить конфликты зависимостей в composer проще устанавливать
+такие вещи как phpunit, phpstan, cs-fixer итд посредством phar архивов
+
+Использование такой глобальной установки PHPUnit почти всегда является плохой идеей,
+поскольку, например, для разных проектов, над которыми вы работаете,
+могут потребоваться разные версии PHPUnit.
+
+Поэтому лучше всего использовать локальную для проекта установку версии PHPUnit,
+которая должна использоваться для текущего проекта.

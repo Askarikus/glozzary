@@ -1,0 +1,8 @@
+Должно быть соответствие depends - ведет с собой переменную из соответсвующего теста
+* @depends testCreteClientCardBig
+  * @depends testCreateReferralsCard
+  */
+public function testCreateTransactionClientCardSmall(
+    ClientCard $clientCardBig,
+    ClientCard $clientCardSmall,
+)

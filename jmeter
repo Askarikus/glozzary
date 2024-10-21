@@ -4,3 +4,32 @@
   в директорию /lib/ext скопировать из старого jmeter файлы
 чтобы коннектиться к БД:
   в директорию /lib скопировать адаптер
+
+запуск теста из командной строки:
+./jmeter -n -t JMXs/realworld_symfony_askar.jmx
+
+после запуска influx-db через docker указываем в вирт машине:
+admin askar
+password africa281132
+org <имя огранизации, типа home>
+initial bucket <имя_корзины, например, realworld>
+
+выдается токен, типа:
+BOBgKlxKxx9PXHWGrx9sd7vHm9Hx6jy0HjWjkHrj7h07xVmm4GQYGgjnQ94zNwBoiDx-xRw9EcIxjahaanheDw==
+его вставляем:
+в DataSource:
+grafana Add Header Bearer BOBgKlxKxx9PXHWGrx9sd7vHm9Hx6jy0HjWjkHrj7h07xVmm4GQYGgjnQ94zNwBoiDx-xRw9EcIxjahaanheDw==
+ищем в influxdb id огранизации и вставляем
+
+в BackendListener:
+influxdbMetricsSender	org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender
+influxdbUrl	http://localhost:8086/api/v2/write?org=home&bucket=bonushelp
+application <например, application_name>
+measurement	<что-то произвольное, например, jmeter>
+summaryOnly	false
+samplersRegex	.*
+percentiles	99;95;90
+testTitle	<какой то Title, например, Test name>
+eventTags
+influxdbToken	BOBgKlxKxx9PXHWGrx9sd7vHm9Hx6jy0HjWjkHrj7h07xVmm4GQYGgjnQ94zNwBoiDx-xRw9EcIxjahaanheDw==
+influxdbUrl 	http://localhost:8086/api/v2/write?org=<имя огранизации, типа home>&bucket=<имя_корзины, например, realworld>

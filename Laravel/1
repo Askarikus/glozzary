@@ -1,0 +1,11 @@
+необходимо поменять права на папку storage
+sudo chown -R $USER:www-data storage
+sudo chmod o+w ./storage/ -R
+
+
+в composer.json @php artisan package:discover --ansi:
+@ выставляется для того, чтобы вызвался именно тот интерпретатор php, что и вызвал
+composer, который в процессе вызывает этот скрипт
+
+ узнать, где лежит конфиг глобального composer:
+ composer global config home

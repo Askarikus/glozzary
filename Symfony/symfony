@@ -1,3 +1,13 @@
 создать новый проект
 
 symfony new --webapp <название проекта>
+
+чтобы узнать, какие версии пакетов symfony установлены в проекте:
+composer show symfony/*
+
+чтобы в сообщениях не всплывали ссылки на объект типа Project@2251 нужно реализовать
+метод __toString:
+public function __toString(): string
+{
+    return 'Project name ' . $this->name . ' id ' . $this->getStringId();
+}
