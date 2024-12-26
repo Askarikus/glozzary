@@ -11,3 +11,7 @@ public function __toString(): string
 {
     return 'Project name ' . $this->name . ' id ' . $this->getStringId();
 }
+
+
+установить symfony cli:
+wget https://get.symfony.com/cli/installer -O - | bash

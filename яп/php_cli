@@ -6,3 +6,5 @@ php -S localhost:8888 <some file> - переходя по этому порту 
 
 узнать конкретную версию модуля:
 php --ri xdebug|grep Version
+
+php -q "quietly" без многословности

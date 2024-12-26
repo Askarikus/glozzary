@@ -1,2 +1,4 @@
+sudo apt install xrdp
+
 запустить с текстом логов в окне терминала
 G_MESSAGES_PREFIXED=all G_MESSAGES_DEBUG=all /usr/bin/remmina

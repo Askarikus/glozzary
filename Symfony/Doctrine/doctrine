@@ -17,3 +17,10 @@ private string $config;
 и получ вставляем в env
 затем в doctrine.yml убираем resolve:
 url: '%env(resolve:DATABASE_URL)%' -> url: '%env(DATABASE_URL)%'
+
+паттерны, используемые доктриной:
+Unit of Work
+Identity Map
+Data Mapper
+
+Doctrine использует ORM и DBAL(обертка над PDO для построения запросов)

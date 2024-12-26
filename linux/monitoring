@@ -21,12 +21,28 @@ USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 VSZ - вирутальная память
 
 NODE_EXPORTER
+скачиваем с github https://github.com/prometheus/node_exporter/releases, выбирая последний релиз
 запускаем из папки ./node_exporter - смотрим метрики http://localhost:9100/
 
 PROMETHEUS
-запускаем из папки ./prometheus  смотрим localhost:9090
-в файлу node_exporter.yaml:
+скачиваем https://github.com/prometheus/prometheus/releases/download/v3.1.0-rc.0/prometheus-3.1.0-rc.0.linux-amd64.tar.gz
+
+прежде чем запустить создаем файл prometheus.yaml - можно в домашней папке:
+global:
+  scrape_interval: 15s
+
 scrape_configs:
 - job_name: node
   static_configs:
   - targets: ['localhost:9100']
+запускаем из папки ./prometheus  смотрим localhost:9090
+
+устанавливаем grafana:
+если скачиваем с сайти, то не выбирать Enterprise версию(тумблер OSS)
+sudo apt-get install -y adduser libfontconfig1 musl
+wget https://dl.grafana.com/oss/release/grafana_11.4.0_amd64.deb
+sudo dpkg -i grafana_11.4.0_amd64.deb
+
+sudo systemctl daemon-reload
+sudo systemctl enable grafana-server
+sudo systemctl start grafana-server

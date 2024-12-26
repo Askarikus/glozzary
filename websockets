@@ -1,0 +1,15 @@
+Транспорты реального времени бывают не только вебсокеты:
+
+Bidirectional:
+WebSockets
+HTTP-Streaming,
+Server-Sent Events (SSE),
+SockJS, and has an experimental support for WebTransport
+UniDirectional:
+GRPC
+
+Centrifugo отличается от Pusher, Ably, Pubnub тем, что это отдельный
+сервер, а не SaaS платформа
+Socket.io - просто библиотека и придется писать сервер поверх нее
+
+альтернатива - Nats

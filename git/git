@@ -9,6 +9,8 @@ git push
 git show <hash коммита>:имя файла - перенаправить в файл
 git show 7af5c1b51245648b7b799f8936b7320dd5b60cbe:config/routes.php > config/routes.php
 
+git show --textconv :migrations/Version20241202075449.php
+
 если файл уже отслеживается, то его придется вручную удалить:
 git rm --cached [file]
 
@@ -23,7 +25,7 @@ git status:
 и файл переходит в категорию тех файлов, что не войдут в коммит
 
 
-при работе с субмодулями, чтобы добавить в исключение файл в в субмоделе нужно:
+при работе с субмодулями, чтобы добавить в исключение файл в субмоделе нужно:
 nano .git/modules/html/info/exclude
 
 пример из bonushelp:
@@ -33,4 +35,4 @@ nano .git/modules/html/info/exclude
 индекса:
 git rm --cached -f bonushelp
 
-такие файлы, как composer.lock лучше помещать в контроль версиий
+такие файлы, как composer.lock лучше помещать в контроль версий

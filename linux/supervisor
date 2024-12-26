@@ -1,0 +1,13 @@
+apt-get install supervisor
+
+в папку /etc/supervisor/conf.d добавляем файл с расширением .conf
+
+[program:long_script]
+command=/usr/local/bin/long.sh
+autostart=true // запускать каждый раз при загрузке системы
+autorestart=true // перезапускать в случае выхода
+stderr_logfile=/var/log/long.err.log
+stdout_logfile=/var/log/long.out.log
+
+supervisorctl reread
+supervisorctl update

@@ -31,3 +31,7 @@ You can fix the big ass context menu by setting window.titleBarStyle to custom, 
 There is a GH issue, too: https://github.com/microsoft/vscode/issues/224515
 Параметры->поиск window.titleBarStyle, переставив с native(берет из системы) на
 custom
+
+
+Сниппеты (по-английски «snippet») — это часто используемые фрагменты кода, типа met
+Suggestion - подсказки

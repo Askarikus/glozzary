@@ -1,5 +1,5 @@
 sudo apt-get install ubuntu-desktop
-startx
+sudo apt install xrdp
 
 запустить браузер с поддержкой ввода с клавиатуры
 GTK_IM_MODULE=xim firefox
@@ -14,3 +14,8 @@ KDE Plasma 5
 
 GEDIT
 дефолтный текстовый редактор для GNOME
+
+ярлыки для программ в меню находятся, но не разобраться что и к чему относится:
+/usr/share/applications
+/usr/local/share/applications
+~/.local/share/applications
