@@ -2,3 +2,29 @@ sudo apt install xrdp
 
 запустить с текстом логов в окне терминала
 G_MESSAGES_PREFIXED=all G_MESSAGES_DEBUG=all /usr/bin/remmina
+
+если сбрасывает соединение, то надо выйти из сессии под SSH:
+loginctl terminate-user askar - сразу помогает
+
+loginctl terminate-session 2447
+а вот эти могут сбросить работу программ:
+sudo systemctl restart systemd-logind
+sudo systemctl restart display-manager
+
+Проверить статусы служб:
+systemctl status gdm3 gnome-remote-desktop xrdp ssh
+
+Проверить активные сеансы:
+loginctl list-sessions
+
+Проверить логи xrdp:
+sudo tail -n 50 /var/log/xrdp.log /var/log/xrdp-sesman.log
+
+Также проверьте логи Xorg:
+cat ~/.xsession-errorsq
+
+gnome-shell — главный процесс графической среды GNOME
+
+pkill -9 gnome-shell - GNOME Shell аварийно завершается
+альтернатива:
+pkill -15 gnome-shell - корректное завершение

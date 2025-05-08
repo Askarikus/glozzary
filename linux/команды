@@ -3,6 +3,9 @@ SUDO
 
 Также, мое предположение, что выполнение команд от имени другого пользователя настраивается в файле sudoers
 
+edit sudoers:
+visudo
+
 SU
 переключает тебя на пользователя
 
@@ -29,6 +32,8 @@ clear - настоящая очистка терминала
 TAR
 tar -zxvf
 tar -xvf <some_app_name>.tar.gz - сразу распакует и разархивирует.
+заархивировать папку:
+tar -czpf path/archive-name.tar.gz /path/to/anyfolder
 
 PS
 ps - выведет просто процессы, которые присоединены к этому терминалу:
@@ -57,6 +62,7 @@ ps aux|grep nginx - вывести пид процесса
 
 LSOF
 lsof выводит список всех открытых файлов (LiSts all Open Files).
+sudo lsof -i :9003 - какая программа использует данный порт
 
 lsof -u askar| wc -l - количество открытых файлов
 12837
@@ -73,6 +79,7 @@ echo $USER
 askar
 
 find ~/ -type f -name "postgis-2.0.0"
+find /home/askar -iname "*remmina*"
 ЧТОБЫ УДАЛИТЬ ФАЙЛЫ С УКАЗАННЫМ РАСШИРЕНИЕМ:
 find . -name "*.bak" -type f     сначала найти
 find . -name "*.bak" -type f -delete     потом удалить

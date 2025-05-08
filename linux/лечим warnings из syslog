@@ -1,0 +1,4 @@
+ dconf-editor сложная штука для настройки реестра gnome
+ Re: Window manager warning: Overwriting existing binding of keysym 37 with keysym 37 (keycode 10). 			#13
+
+I found the reason why the warning is displayed. It has to do with Dash-to-Dock and the keyboard shortcuts. You can install the dconf-editor, then navigate to "/org/gnome/shell/extensions/dash-to-dock/" and search for "hot-keys", "hotkeys-overlay" and "hotkeys-show-dock". Then disable the options. Now the message no longer appears.

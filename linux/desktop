@@ -19,3 +19,29 @@ GEDIT
 /usr/share/applications
 /usr/local/share/applications
 ~/.local/share/applications
+
+
+оконный интерфейс x11 - xwindows sytem display server protocol
+gnome 46 desktop environment Gnome uses the Wayland display server by default but can also support X11
+переустановка:
+sudo apt install ubuntu-gnome-desktop
+
+Что такое GTK?
+GTK and Qt are user interface toolkits and frameworks. GTK is the standard toolkit for GNOME/Ubuntu while Qt is used in KDE/Kubuntu
+GTK, или GIMP Toolkit - это мультиплатформенный инструментарий для разработки графического пользовательского интерфейса
+
+Доступно несколько версий GTK. Их можно установить с помощью следующих пакетов:
+
+    GTK 4.x доступен с пакетом gtk4.
+    GTK 3.x доступен с пакетом gtk3.
+    GTK 2.x доступен с пакетом gtk2.
+    GTK 1.x доступен с пакетом gtkAUR.
+Варианты запустить "Проводник":
+xdg-open ~
+gio open .
+nautilus --browser
+
+важно проверять/переустанавливать драйвера:
+nvidia-smi - информация о nvidia
+
+sudo ubuntu-drivers autoinstall

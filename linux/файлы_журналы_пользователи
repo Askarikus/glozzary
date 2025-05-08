@@ -24,13 +24,19 @@ cat /etc/passwd - пользователи
 chsh - поменять оболочку текущего юзера
 
 TAIL
-tail -f /path/thefile.log
+tail -f /path/thefile.log,
+например tail -f /var/log/syslog
 
 chown, chgrp
 sudo chown -R www-data:www-data askar_realworld_symfony
 
 
 scp text.txt askar@194.87.147.143:{путь_к_файлу}
+
+с удаленного компа:
+scp username@remote:/file/to/send /where/to/put
+scp with reg exp:
+scp -p 'username@remote:/file/to/send*' /where/to/put
 
 /etc/hosts -> 127.0.0.1 - {имя сервера} - теперь по этому имени будет доступен локалхост, самое первое куда смотрит поисковик адреса - этот файл и резолвит его
 

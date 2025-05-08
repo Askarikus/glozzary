@@ -67,4 +67,6 @@ en| |   --> ethernet
 
 ifconfig - уже не используется
 
-
+аналог netstat:
+sudo ss -tuln
+sudo lsof -i -P -n

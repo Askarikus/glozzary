@@ -3,9 +3,12 @@ ssh-keygen
 содержимое id_rsa.pub -> .ssh/authorized_keys
 инструкция для github
 ssh-keygen -t ed25519 -C "askarikus@yandex.ru" ed25519 - алгоритм шифрования, C - комментарий
-start ssh-agent (но как правило, все работает без запуска агента):
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
+
+стартуем ssh-agent (но как правило, все работает без запуска агента):
+eval "$(ssh-agent -s)" - выведет: Agent pid 300561
+затем добавляем ключ:
+ssh-add ~/.ssh/id_ed25519 - эту строку не лишним будет запускать перед тем как клонируем с github
+
 check-connection:
 ssh -vT git@github.com
 or:

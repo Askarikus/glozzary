@@ -3,7 +3,7 @@
 sudo apt install zsh
 
 Применяем его для юзера
-chsh -s /bin/zsh username
+chsh -s /bin/zsh askar
 
 Устанавливаем:
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
