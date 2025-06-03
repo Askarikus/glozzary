@@ -28,7 +28,7 @@ NODE_EXPORTER
 PROMETHEUS
 скачиваем https://github.com/prometheus/prometheus/releases/download/v3.1.0-rc.0/prometheus-3.1.0-rc.0.linux-amd64.tar.gz
 
-прежде чем запустить создаем файл prometheus.yaml - можно в домашней папке:
+прежде чем запустить создаем файл prometheus.yaml - нужно в домашней папке:
 global:
   scrape_interval: 15s
 
@@ -40,7 +40,7 @@ scrape_configs:
 
 устанавливаем grafana:
 если скачиваем с сайта, то не выбирать Enterprise версию(тумблер OSS)
-sudo apt-get install -y adduser libfontconfig1 musl
+sudo apt-get install -y libfontconfig1 musl
 wget https://dl.grafana.com/oss/release/grafana_11.4.0_amd64.deb
 sudo dpkg -i grafana_11.4.0_amd64.deb
 
@@ -54,3 +54,6 @@ sudo systemctl start grafana-server
 
 через gnome-session-properties
 добавляем в автозагрузку
+
+на всякий случай можно поменять порт, на котром сидит grafana:
+sudo nano /etc/grafana/grafana.ini

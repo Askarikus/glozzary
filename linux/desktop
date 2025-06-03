@@ -45,3 +45,7 @@ nautilus --browser
 nvidia-smi - информация о nvidia
 
 sudo ubuntu-drivers autoinstall
+
+gnome-tweaks:
+sudo apt install gnome-tweaks - настраиваем так, чтобы появились кнопки
+maximize and minimize window

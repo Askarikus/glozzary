@@ -69,6 +69,9 @@ lsof -u askar| wc -l - количество открытых файлов
 lsof| wc -l
 256316
 
+также можно с помощью этой команды определить, занимает ли какой-либо процесс в данный момент файл:
+lsof docker/nginx/default.conf
+
 WGET
 wget -q - quiet (no output)
 

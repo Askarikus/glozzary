@@ -28,3 +28,18 @@ gnome-shell — главный процесс графической среды 
 pkill -9 gnome-shell - GNOME Shell аварийно завершается
 альтернатива:
 pkill -15 gnome-shell - корректное завершение
+
+вот так выглядит после перезаупуска и входа в систему
+➜  ~ loginctl list-sessions
+SESSION  UID USER  SEAT  TTY   STATE  IDLE SINCE
+      2 1000 askar -     pts/0 active no   -    
+     c1  124 gdm   seat0 tty1  active no   -    
+
+2 sessions listed.
+➜  ~ loginctl list-sessions
+SESSION  UID USER  SEAT  TTY   STATE  IDLE SINCE
+      2 1000 askar -     pts/0 active no   -    
+     c1  124 gdm   seat0 tty1  active no   -    
+     c2 1000 askar -     -     active no   -    
+
+3 sessions listed.

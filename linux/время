@@ -1,0 +1,4 @@
+текущее время и часовой пояс:
+timedatectl
+
+sudo timedatectl set-timezone Europe/Podgorica

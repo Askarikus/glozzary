@@ -31,3 +31,6 @@ telephone-codeset="UTF-8"
 xfce - поменять язык на русский:
 setxkbmap ru
 setxkbmap en_US
+
+раскомментировать в файле /etc/locale.gen
+sudo nano /etc/locale.gen
